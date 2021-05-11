@@ -10,6 +10,7 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     y2=Vector2.get_y(pos2)
     Fnorm = G*mass1*mass2/((x1-x2)^2+(y1-y2)^2)
     F=[Fnorm*(pos2[0]-pos1[0]),Fnorm*(pos2[1]-pos1[1])]
+    return F
     raise NotImplementedError
 
 
@@ -41,6 +42,7 @@ class IEngine:
                     F[1]+=gravitational_force([y0[2*i],y0[2*i+1]],m,[y0[2*k],y0[2*k+1]],m)[1]
             y.append(F[0]/m)
             y.append(F[1]/m)
+        return y
                 
             
             
@@ -54,6 +56,7 @@ class IEngine:
                 [x1, y1, x2, y2, ..., xn, yn, vx1, vy1, vx2, vy2, ..., vxn, vyn]
             where xi, yi are the positions and vxi, vyi are the velocities.
         """
+        
         raise NotImplementedError
 
 
