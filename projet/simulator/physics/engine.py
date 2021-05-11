@@ -1,5 +1,6 @@
 from ..utils.vector import Vector, Vector2
 from .constants import G
+from .constants import m
 
 
 def gravitational_force(pos1, mass1, pos2, mass2):
