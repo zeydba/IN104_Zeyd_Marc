@@ -31,7 +31,17 @@ class IEngine:
         n = len(y0)/4
         y=[]
         for i in range(2*n,4*n):
-            y.append(y0[])
+            y.append(y0[i])
+        for i in range(n):
+            F=[0,0]
+            for k in range (n):
+                if k !=i:
+                    F[0]+=gravitational_force([y0[2*i],y0[2*i+1]],m,[y0[2*k],y0[2*k+1]],m)[0]
+                    F[1]+=gravitational_force([y0[2*i],y0[2*i+1]],m,[y0[2*k],y0[2*k+1]],m)[1]
+            y.append(F[0]/m)
+            y.append(F[1]/m)
+                
+            
             
         raise NotImplementedError
 
