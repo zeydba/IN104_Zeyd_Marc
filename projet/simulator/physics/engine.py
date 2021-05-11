@@ -3,9 +3,12 @@ from .constants import G
 
 
 def gravitational_force(pos1, mass1, pos2, mass2):
-    """ Return the force applied to a body in pos1 with mass1
-        by a body in pos2 with mass2
-    """
+    x1=Vector2.get_x(pos1)
+    x2=Vector2.get_x(pos2)
+    y1=Vector2.get_y(pos1)
+    y2=Vector2.get_y(pos2)
+    Fnorm = G*mass1*mass2/((x1-x2)^2+(y1-y2)^2)
+    F=[Fnorm*(pos2[0]-pos1[0]),Fnorm*(pos2[1]-pos1[1])]
     raise NotImplementedError
 
 
@@ -25,6 +28,11 @@ class IEngine:
                 [vx1, vy1, vx2, vy2, ..., vxn, vyn, ax1, ay1, ax2, ay2, ..., axn, ayn]
             where vxi, vyi are the velocities and axi, ayi are the accelerations.
         """
+        n = len(y0)/4
+        y=[]
+        for i in range(2*n,4*n):
+            y.append(y0[])
+            
         raise NotImplementedError
 
     def make_solver_state(self):
