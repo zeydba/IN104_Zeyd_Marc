@@ -52,7 +52,7 @@ class DummyEngine(IEngine):
         y=[]
         masses=[]
         for i in range(n):
-            for body in self.world.bodies:
+            for body in self.world.bodies():
                 posx = Vector2.get_x(body.position)
                 posy = Vector2.get_y(body.position)
                 if (posx == y0[2*i]) and (posy == y0[2*i+1]):
@@ -77,11 +77,13 @@ class DummyEngine(IEngine):
     def make_solver_state(self):
     
         y0=[]
-        for body in self.world.bodies:
+        for body in self.world.bodies():
             y0.append(body.position[0])
             y0.append(body.position[1])
             
-        for body in self.world.bodies:
+        for body in self.world.bodies():
             y0.append(body.velocity[0])
             y0.append(body.velocity[1])
+        
+
         
