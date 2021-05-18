@@ -12,7 +12,8 @@ class ISolver:
     # and build a more general library that
     # we will be able to reuse some day
 
-       
+     raise NotImplementedError
+
 
 class DummySolver(ISolver):
    
