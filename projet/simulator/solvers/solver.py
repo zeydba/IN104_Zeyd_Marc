@@ -12,8 +12,19 @@ class ISolver:
     # and build a more general library that
     # we will be able to reuse some day
 
-    
-     raise NotImplementedError
+    def __init__(self, f, t0, y0, max_step_size=0.01):
+        self.f = f
+        self.t0 = t0
+        self.y0 = y0
+        self.max_step_size = max_step_size
+
+    def integrate(self, t):
+        """ Compute the solution of the system at t
+            The input `t` given to this method should be increasing
+            throughout the execution of the program.
+            Return the new state at time t.
+        """
+        raise NotImplementedError
 
 
 class DummySolver(ISolver):
@@ -33,4 +44,4 @@ class DummySolver(ISolver):
         #on rajoute la petite portion de pas
         y = y + t-(self.t0+h*N)*self.f(y)
         return y
-    pass
+    
