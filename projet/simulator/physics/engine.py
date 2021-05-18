@@ -65,13 +65,14 @@ class DummyEngine(IEngine):
             F=[0,0]
             for k in range (n):
                 if k !=i:
-                    F[0]+=gravitational_force([y0[2*i],y0[2*i+1]],masses[i],[y0[2*k],y0[2*k+1]],masses[k])[0]
                     F[1]+=gravitational_force([y0[2*i],y0[2*i+1]],masses[i],[y0[2*k],y0[2*k+1]],masses[k])[1]
+                    F[0]+=gravitational_force([y0[2*i],y0[2*i+1]],masses[i],[y0[2*k],y0[2*k+1]],masses[k])[0]
             y.append(F[0]/masses[i])
             y.append(F[1]/masses[i])
         return y
                 
             
+           
     
     def make_solver_state(self):
     
