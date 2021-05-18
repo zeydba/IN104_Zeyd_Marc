@@ -1,3 +1,5 @@
+from ..utils.vector import Vector
+
 class SolverError(Exception):
     pass
 
@@ -29,19 +31,14 @@ class ISolver:
 
 class DummySolver(ISolver):
    
-    def __init__(self, f, t0, y0, max_step_size=0.01):
-        self.f = f
-        self.t0 = t0
-        self.y0 = y0
-        self.max_step_size = max_step_size
+
 
     def integrate(self, t):
-        h = self.max_step_size
+        h = float(self.max_step_size)
         N = int((t-self.t0)/h)
         y = self.y0
         for i in range(0,N):
-            y = y + h*self.f(y)
+            y = y + Vector.__mul__(*self.f(0,y),h)
         #on rajoute la petite portion de pas
-        y = y + t-(self.t0+h*N)*self.f(y)
+        y = y + t-(self.t0+h*N)*self.f(0,y)
         return y
-    
