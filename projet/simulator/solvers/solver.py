@@ -12,6 +12,10 @@ class ISolver:
     # and build a more general library that
     # we will be able to reuse some day
 
+       
+
+class DummySolver(ISolver):
+   
     def __init__(self, f, t0, y0, max_step_size=0.01):
         self.f = f
         self.t0 = t0
@@ -27,7 +31,4 @@ class ISolver:
         #on rajoute la petite portion de pas
         y = y + t-(self.t0+h*N)*self.f(y)
         return y
-       
-
-class DummySolver(ISolver):
     pass
