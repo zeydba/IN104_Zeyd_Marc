@@ -27,8 +27,7 @@ class ISolver:
         #on rajoute la petite portion de pas
         y = y + t-(self.t0+h*N)*self.f(y)
         return y
-        raise NotImplementedError
-
+       
 
 class DummySolver(ISolver):
     pass
