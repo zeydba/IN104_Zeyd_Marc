@@ -1,5 +1,3 @@
-from ..utils.vector import Vector
-
 class SolverError(Exception):
     pass
 
@@ -30,15 +28,31 @@ class ISolver:
 
 
 class DummySolver(ISolver):
-   
+    def  integrate (self,t):
+        # print("je commence integrate")
+        # h=self.max_step_size
+        # print("j'ai calculé h")
+        # N = (t-self.t0)//(h+1)
+        # print("j'ai calculé N")
+        # k=1
+        # print ("je rentre dans la boucle")
+        # while ((k*(t-self.t0)/N)<t):
+        #     print("je suis dans la boucle")
+        #     for k in range (len(self.y0)):
+        #         self.y0[k] += (k*(t-self.t0)/N) * self.y0[k]
+        #     k+=1
+        # print ("je suis sorti de la boucle")
+        # return self.y0 
+        h = self.max_step_size
+        n=(t-self.t0)//(h+1)
+        if(n==0):
+             pas_fix=t-self.t0
+        else:
+            pas_fix=(t-self.t0)/n
 
-
-    def integrate(self, t):
-        h = float(self.max_step_size)
-        N = int((t-self.t0)/h)
-        y = self.y0
-        for i in range(0,N):
-            y = y + Vector.__mul__(*self.f(0,y),h)
-        #on rajoute la petite portion de pas
-        y = y + t-(self.t0+h*N)*self.f(0,y)
-        return y
+        while(self.t0<t):
+            y =self.f(self.t0,self.y0)
+            for k in range (len(self.y0)):       
+                self.y0[k] += y[k] * pas_fix 
+                self.t0 += pas_fix
+        return self.y0
