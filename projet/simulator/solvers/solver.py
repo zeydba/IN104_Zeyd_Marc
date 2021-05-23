@@ -29,7 +29,7 @@ class ISolver:
 
 class DummySolver(ISolver):
     def  integrate (self,t):
-        #première fonction integrate
+        #première fonction integrate ne fonctionnant pas 
         # h=self.max_step_size
         # N = (t-self.t0)//(h+1)
         # k=1
