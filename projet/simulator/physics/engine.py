@@ -8,12 +8,9 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     """ Return the force applied to a body in pos1 with mass1
         by a body in pos2 with mass2
     """
-    """ Return the force applied to a body in pos1 with mass1
-        by a body in pos2 with mass2
-    """
+
     r=Vector.norm(pos1-pos2)
     F=-(G*mass2/(Vector.norm(pos1-pos2)**3))*(pos1-pos2)
-    # print(F)
     return F
 
 
@@ -61,29 +58,21 @@ class DummyEngine(IEngine):
         # print(y0)
         # print (y0)
         # input()
+        
         n = int(len(y0)/4)
         y = Vector(4*n)
         
-        # print("je rentre dans la boucle")
-        # print(y0)
         for i in range (n):
-            # print(y)
             y[2*i]=y0[len(self.world)*2+2*i]
             y[2*i+1]= y0[2*len(self.world)+2*i+1]
             F = Vector2(0,0)
+            
             for k in range (n):
-                # print(i,k)
                 if (k!=i): #on vérifie que ce ne sont pas les mêmes corps
                     F += (gravitational_force(Vector2(y0[2*i],y0[2*i+1]), self.world._bodies[i].mass, Vector2(y0[k*2],y0[k*2+1]), self.world._bodies[k].mass))                   
             y[2*(len(self.world)+i)] = F.get_x()
             y[2*(len(self.world)+i)+1] = F.get_y()
-        # print("voici le nouveau vecteur y")
-        # print(y)
         y=list(y)
-        # print(y)
-        # print(y)
-        # print(y0)
-
         return y
 
 
