@@ -9,24 +9,39 @@ from simulator.graphics import Screen
 import pygame as pg
 
 if __name__ == "__main__":
-    b1 = Body(Vector2(0, 0),
-              velocity=Vector2(0.2, 0),
-              mass=10,
-              draw_radius=10)
-    b2 = Body(Vector2(1, 1),
+    b1 = Body(Vector2(0, 1),
               velocity=Vector2(0, 0),
-              mass=1,
+              mass=10,
               draw_radius=5)
-    # b3 = Body(Vector2(1, 1),
-              # velocity=Vector2(1.5, 0.1),
-              # mass=5,
-              # draw_radius=8)
+    b2 = Body(Vector2(0, 0),
+              velocity=Vector2(-0.2, -0.1),
+              mass=10,
+              draw_radius=5)
+
+    b3 = Body(Vector2(1, 0),
+              velocity=Vector2(0, 0.1),
+              mass=10,
+              draw_radius=5)
+    b4 = Body(Vector2(2, 1),
+              velocity=Vector2(0, 0.1),
+              mass=10,
+              draw_radius=5)
+    b5 = Body(Vector2(2, 2),
+              velocity=Vector2(0, 0.1),
+              mass=10,
+              draw_radius=5)
+    b6 = Body(Vector2(0,3),
+              velocity=Vector2(0, 0.1),
+              mass=10,
+              draw_radius=5)
 
     world = World()
     world.add(b1)
     world.add(b2)
-    # world.add(b3)
-
+    world.add(b3)
+    world.add(b4)
+    world.add(b5)
+    world.add(b6)
 
     simulator = Simulator(world, DummyEngine, DummySolver)
 
