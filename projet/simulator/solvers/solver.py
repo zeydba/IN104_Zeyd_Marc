@@ -29,30 +29,26 @@ class ISolver:
 
 class DummySolver(ISolver):
     def  integrate (self,t):
-        # print("je commence integrate")
+        #première fonction integrate
         # h=self.max_step_size
-        # print("j'ai calculé h")
         # N = (t-self.t0)//(h+1)
-        # print("j'ai calculé N")
         # k=1
-        # print ("je rentre dans la boucle")
-        # while ((k*(t-self.t0)/N)<t):
-        #     print("je suis dans la boucle")
+        # while ((k*(t-self.t0)/N)<t):  
         #     for k in range (len(self.y0)):
         #         self.y0[k] += (k*(t-self.t0)/N) * self.y0[k]
         #     k+=1
-        # print ("je suis sorti de la boucle")
         # return self.y0 
+        
         h = self.max_step_size
         n=(t-self.t0)//(h+1)
         if(n==0):
-             pas_fix=t-self.t0
+             pas=t-self.t0
         else:
-            pas_fix=(t-self.t0)/n
+            pas=(t-self.t0)/n
 
         while(self.t0<t):
             y =self.f(self.t0,self.y0)
             for k in range (len(self.y0)):       
-                self.y0[k] += y[k] * pas_fix 
-                self.t0 += pas_fix
+                self.y0[k] += y[k] * pas
+                self.t0 += pas
         return self.y0
