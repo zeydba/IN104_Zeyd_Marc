@@ -9,7 +9,7 @@ def gravitational_force(pos1, mass1, pos2, mass2):
         by a body in pos2 with mass2
     """
 
-    r=Vector.norm(pos1-pos2)
+    
     F=-(G*mass2/(Vector.norm(pos1-pos2)**3))*(pos1-pos2)
     return F
 
